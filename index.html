@@ -5,36 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Checklist Suzanne</title>
 
-<!-- Balises pour afficher en PWA sans barre Safari -->
+<!-- Balises pour PWA plein écran -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Checklist Suzanne">
+<link rel="manifest" href="manifest.json">
 
 <style>
 :root{--grey:#e6e6e6;--border:2px solid #000}
 body{margin:0;font-family:Arial,sans-serif;display:flex;height:100vh}
-.left{flex:2;display:flex;flex-direction:column}
-.right{flex:1;border-left:var(--border);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8px}
-header{background:var(--grey);font-weight:bold;font-size:24px;text-align:center;padding:6px 0;border-bottom:var(--border)}
+.left{flex:1 1 auto;min-height:60vh;max-height:66vh;overflow-y:auto;display:flex;flex-direction:column}
+.right{flex:0 0 34vh;border-left:var(--border);display:flex;flex-direction:column;
+       justify-content:center;align-items:center;padding:8px}
+header{background:var(--grey);font-weight:bold;font-size:24px;text-align:center;
+       padding:6px 0;border-bottom:var(--border)}
 .grid{flex:1;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(4,1fr);gap:6px;padding:6px}
 section{border:var(--border);padding:4px;display:flex;flex-direction:column}
 section h2{margin:0 0 4px;font-weight:bold;font-size:14px}
 label{display:flex;align-items:center;font-size:12px;margin-bottom:2px}
 input{margin-right:4px;transform:scale(.9)}
-.lever{grid-area:1/1}.dejeuner{grid-area:1/2/2/4}.lecture{grid-area:1/4}.exercices{grid-area:1/5}
+.lever{grid-area:1/1}
+.dejeuner{grid-area:1/2/2/4}
+.lecture{grid-area:1/4}
+.exercices{grid-area:1/5}
 .diner{grid-area:2/1/3/6}
-.medisie{grid-area:3/1}.jeux{grid-area:3/2}.ecriture{grid-area:3/3}.souper{grid-area:3/4/4/6}
-.tenirpropre{grid-area:4/1}.douche{grid-area:4/2}.dessert{grid-area:4/3}.coucher{grid-area:4/4}.tvdemain{grid-area:4/5}
+.medisie{grid-area:3/1}
+.jeux{grid-area:3/2}
+.ecriture{grid-area:3/3}
+.souper{grid-area:3/4/4/6}
+.tenirpropre{grid-area:4/1}
+.douche{grid-area:4/2}
+.dessert{grid-area:4/3}
+.coucher{grid-area:4/4}
+.tvdemain{grid-area:4/5}
+.diner label{flex:0 0 50%} /* Dîner sur 2 colonnes internes sans lignes visibles */
 .right img{max-width:100%;max-height:45%;margin-bottom:8px}
 .quote{font-style:italic;font-size:14px;text-align:center}
 
-/* 📱 Correction portrait iPad ➔ 2 colonnes */
+/* Portrait iPad correction */
 @media (orientation:portrait){
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:auto;
-  }
+  .grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto;}
   body{flex-direction:column}
   .left{flex:1 1 auto;height:66vh;overflow-y:auto}
   .right{flex:0 0 34vh;border-left:none;border-top:var(--border)}
@@ -42,32 +53,27 @@ input{margin-right:4px;transform:scale(.9)}
 }
 </style>
 
-<!-- Script pour charger le contenu -->
 <script src="today.js"></script>
 </head>
 
 <body>
 <div class="left">
-  <header id="title">Chargement...</header>
+  <header id="title">Chargement…</header>
   <div class="grid" id="grid"></div>
 </div>
 
 <div class="right" id="image"></div>
 
 <script>
-/*--------- Configuration des rubriques ---------*/
 const SECTIONS=["Lever","Déjeuner","Lecture","Exercices","Dîner","Médi-sieste",
-                "Jeux stimulants","Écriture","Souper","Tenir propre",
-                "Douche","Dessert","Coucher","TV demain"];
+                "Jeux stimulants","Écriture","Souper","Tenir propre","Douche","Dessert","Coucher","TV demain"];
 
-/*--------- Chargement des données ---------*/
 const data=window.CHECKLIST_DATA;
 if(!data){
   document.body.innerHTML="<h2 style='padding:20px;font-family:Arial'>today.js manquant ou invalide !</h2>";
   throw new Error("today.js not found");
 }
 
-/*--------- Construction de la grille ---------*/
 const g=document.getElementById("grid");
 SECTIONS.forEach((t,i)=>{
   const s=document.createElement("section");
@@ -77,7 +83,6 @@ SECTIONS.forEach((t,i)=>{
   g.appendChild(s);
 });
 
-/*--------- Remplissage ---------*/
 document.getElementById("title").textContent=data.date_fr||data.date||"";
 document.getElementById("image").innerHTML=
   `<img src="${data.image||'imagedujour.svg'}" alt="">
@@ -94,14 +99,12 @@ SECTIONS.forEach((t,i)=>{
     document.getElementById("sec"+i).appendChild(l);});
 });
 
-/*--------- Persistance coches ---------*/
 document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
    const k=cb.nextSibling.textContent.trim();
    cb.checked=localStorage.getItem(k)==='1';
    cb.onchange=()=>localStorage.setItem(k,cb.checked?'1':'');
 });
 
-/*--------- Reload automatique à 06h ---------*/
 (function(){const n=new Date(),nx=new Date();
   nx.setHours(6,0,0,0);if(n>=nx)nx.setDate(nx.getDate()+1);
   setTimeout(()=>location.reload(),nx-n);}());

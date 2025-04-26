@@ -1,0 +1,11 @@
+{
+  "name": "Checklist Suzanne",
+  "short_name": "Checklist",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "description": "Checklist quotidienne personnalisée pour Suzanne",
+  "icons": []
+}
