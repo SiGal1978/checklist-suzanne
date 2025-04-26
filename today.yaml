@@ -1,6 +1,6 @@
 # ---------- Checklist du jour ----------
 date_fr: Samedi 26 avril 2025          # Bandeau en haut
-image: violon.svg                      # Nom du fichier placé dans le dossier
+image: imagedujour.svg                      # Nom du fichier placé dans le dossier
 
 phrase: >
   Quand tu marches, Suzanne,
