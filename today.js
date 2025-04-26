@@ -25,7 +25,7 @@ window.CHECKLIST_DATA = {
     "Étirements (jour sans tapis)"
   ],
   "Dîner": [
-    "Boeuf Merlot (micro-ondes 5 min puissance élevée, repos 1 min)",
+    "Boeuf Merlot (micro-ondes 5 min à puissance élevée, repos 1 min)",
     "Macédoine de légumes bio (décongeler 5 min, micro-ondes 2 min)",
     "1/3 banane",
     "Trempette Southwest Ranch + craquelins",
