@@ -1,8 +1,6 @@
 window.CHECKLIST_DATA = {
   "date_fr": "Samedi 26 avril 2025",
   "image": "imagedujour.png",
-  "phrase": "Quand tu marches, Suzanne, c’est un peu comme un prélude au violon : lent, mais toujours juste.\n",
-  "citation": "Voltaire : « Suzanne, si tu veux aller vite, prends le train. Si tu veux aller bien, prends ton temps. »\n",
   "Lever": [
     "Débrancher iPad",
     "Pantoprazole 40 mg (30 min avant déjeuner)"
