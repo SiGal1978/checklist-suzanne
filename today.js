@@ -2,7 +2,7 @@ window.CHECKLIST_DATA = {
   "date_fr": "Samedi 26 avril 2025",
   "image": "imagedujour.png",
   "phrase": "Quand tu marches, Suzanne, c’est un peu comme un prélude au violon : lent, mais toujours juste.\n",
-  "citation": "Voltaire a ce message pour vous aujourd’hui : Suzanne, si tu veux aller vite, prends le train. Si tu veux aller bien, prends ton temps.\n",
+  "citation": "Voltaire : « Suzanne, si tu veux aller vite, prends le train. Si tu veux aller bien, prends ton temps. »\n",
   "Lever": [
     "Débrancher iPad",
     "Pantoprazole 40 mg (30 min avant déjeuner)"
@@ -10,37 +10,37 @@ window.CHECKLIST_DATA = {
   "Déjeuner": [
     "Yogourt Balkan 3/4 tasse",
     "3 craquelins",
-    "Beurre d'arachide 1 c. à soupe",
+    "Beurre d'arachide 1 c. à s.",
     "Cheddar",
     "Œuf dur",
     "Collagène (ne pas décapsuler)",
     "D3, K2, Zinc carnosine"
   ],
   "Lecture": [
-    "Lecture 1h"
+    "Lecture 1 h"
   ],
   "Exercices": [
     "Échauffement",
     "Renforcement jambes/bras",
-    "Étirements (jour sans tapis)"
+    "Étirements"
   ],
   "Dîner": [
-    "Boeuf Merlot (micro-ondes 5 min à puissance élevée, repos 1 min)",
-    "Macédoine de légumes bio (décongeler 5 min, micro-ondes 2 min)",
+    "Boeuf Merlot (5 min MO + 1 min repos)",
+    "Macédoine (5 min + 2 min)",
     "1/3 banane",
-    "Trempette Southwest Ranch + craquelins",
+    "Trempette + craquelins",
     "Fromage bleu",
     "Shake protéiné",
     "Pepsi mini",
     "Oméga-3",
     "CoQ10 (ne pas décapsuler)",
-    "Vit. C, E, TMG, etc.",
+    "Vit. C, E, TMG",
     {
-      "Dessert": "chocolat Lindt aux noisettes"
+      "Dessert": "Chocolat Lindt noisettes"
     }
   ],
   "Médi-sieste": [
-    "15-20 min repos"
+    "15–20 min repos"
   ],
   "Jeux stimulants": [
     "Monument 1",
@@ -63,7 +63,7 @@ window.CHECKLIST_DATA = {
     "On lave le cucul"
   ],
   "Dessert": [
-    "Mérité – Häagen-Dazs Mini barres"
+    "Mérité – Häagen-Dazs mini barres"
   ],
   "Coucher": [
     "Brosser dents",
