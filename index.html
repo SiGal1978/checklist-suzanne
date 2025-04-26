@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Checklist Suzanne</title>
 
-<!-- Balises PWA pour affichage plein écran -->
+<!-- Balises PWA -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -13,15 +13,15 @@
 <link rel="manifest" href="manifest.json">
 
 <style>
-:root { --grey:#e6e6e6; --border:2px solid #000 }
-body {
+:root{--grey:#e6e6e6;--border:2px solid #000}
+body{
   margin:0;
   font-family:Arial,sans-serif;
   display:flex;
-  height:100vh;
   flex-direction:column;
+  height:100vh;
 }
-.left {
+.left{
   flex:1 1 auto;
   min-height:60vh;
   max-height:66vh;
@@ -29,7 +29,7 @@ body {
   display:flex;
   flex-direction:column;
 }
-.right {
+.right{
   flex:0 0 34vh;
   border-top:var(--border);
   display:flex;
@@ -38,89 +38,81 @@ body {
   align-items:center;
   padding:8px;
 }
-header {
+header{
   background:var(--grey);
   font-weight:bold;
   font-size:24px;
   text-align:center;
   padding:6px 0;
-  border-bottom:var(--border)
+  border-bottom:var(--border);
 }
-.grid {
+.grid{
   flex:1;
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  grid-auto-rows:minmax(120px,auto);
+  grid-template-rows:repeat(4,auto);
   gap:6px;
-  padding:6px
+  padding:6px;
 }
-section {
+section{
   border:var(--border);
   padding:4px;
   display:flex;
   flex-direction:column;
 }
-section h2 {
+section h2{
   margin:0 0 4px;
   font-weight:bold;
   font-size:14px;
 }
-label {
+label{
   display:flex;
   align-items:center;
   font-size:12px;
   margin-bottom:2px;
 }
-input {
+input{
   margin-right:4px;
   transform:scale(.9);
 }
 
-/* Placement exact */
-.lever { grid-area:1/1 }
-.dejeuner { grid-area:1/2/2/4 }
-.lecture { grid-area:1/4 }
-.exercices { grid-area:1/5 }
-.diner { grid-area:2/1/3/6 }
-.medisie { grid-area:3/1 }
-.jeux { grid-area:3/2 }
-.ecriture { grid-area:3/3 }
-.souper { grid-area:3/4/4/6 }
-.tenirpropre { grid-area:4/1 }
-.douche { grid-area:4/2 }
-.dessert { grid-area:4/3 }
-.coucher { grid-area:4/4 }
-.tvdemain { grid-area:4/5 }
+/* Placement fixe */
+.lever      {grid-area:1/1}
+.dejeuner   {grid-area:1/2/2/4}
+.lecture    {grid-area:1/4}
+.exercices  {grid-area:1/5}
+.diner      {grid-area:2/1/3/6}
+.medisie    {grid-area:3/1}
+.jeux       {grid-area:3/2}
+.ecriture   {grid-area:3/3}
+.souper     {grid-area:3/4/4/6}
+.tenirpropre{grid-area:4/1}
+.douche     {grid-area:4/2}
+.dessert    {grid-area:4/3}
+.coucher    {grid-area:4/4}
+.tvdemain   {grid-area:4/5}
 
-/* Dîner en colonnes internes invisibles */
-.diner label { flex:0 0 50%; box-sizing:border-box }
+/* Dîner en colonnes internes */
+.diner label{flex:0 0 50%; box-sizing:border-box}
 
-/* Image et citations */
-.right img {
-  max-width:100%;
-  max-height:45%;
-  margin-bottom:8px;
-}
-.quote {
-  font-style:italic;
-  font-size:14px;
-  text-align:center;
-}
-
-/* Portrait iPad correction */
-@media (orientation:portrait) {
-  .grid {
+/* Portrait iPad */
+@media (orientation:portrait){
+  .grid{
     grid-template-columns:repeat(2,1fr);
-    grid-auto-rows:minmax(140px,auto);
+    grid-template-rows:auto;
   }
-  .left { height:66vh }
-  .right {
+  .left{height:66vh}
+  .right{
     flex:0 0 34vh;
     border-left:none;
-    border-top:var(--border)
+    border-top:var(--border);
   }
-  .right img { max-height:40% }
+  .right img{max-height:40%}
 }
+
+/* Image et citation */
+.right img{max-width:100%;max-height:45%;margin-bottom:8px}
+.quote{font-style:italic;font-size:14px;text-align:center}
 </style>
 
 <script src="today.js"></script>
@@ -135,11 +127,14 @@ input {
 <div class="right" id="image"></div>
 
 <script>
-/* Rubriques fixes */
-const SECTIONS=["Lever","Déjeuner","Lecture","Exercices","Dîner","Médi-sieste",
-                "Jeux stimulants","Écriture","Souper","Tenir propre","Douche","Dessert","Coucher","TV demain"];
+const SECTIONS=[
+  "Lever","Déjeuner","Lecture","Exercices",
+  "Dîner",
+  "Médi-sieste","Jeux stimulants","Écriture","Souper",
+  "Tenir propre","Douche","Dessert","Coucher","TV demain"
+];
 
-const data = window.CHECKLIST_DATA;
+const data=window.CHECKLIST_DATA;
 if(!data){
   document.body.innerHTML="<h2 style='padding:20px;font-family:Arial'>today.js manquant ou invalide !</h2>";
   throw new Error("today.js not found");
@@ -157,10 +152,10 @@ SECTIONS.forEach((t,i)=>{
 
 /* Remplissage dynamique */
 document.getElementById("title").textContent=data.date_fr||data.date||"";
-document.getElementById("image").innerHTML=
-  `<img src="${data.image||'imagedujour.svg'}" alt="">
-   <p class="quote">${data.phrase||''}</p>
-   <p class="quote">${data.citation||''}</p>`;
+let html = `<img src="${data.image||'imagedujour.png'}" alt="">`;
+if (data.phrase) html += `<p class="quote">${data.phrase}</p>`;
+if (data.citation) html += `<p class="quote">${data.citation}</p>`;
+document.getElementById("image").innerHTML = html;
 
 SECTIONS.forEach((t,i)=>{
   const arr=data[t]||[];
@@ -173,14 +168,14 @@ SECTIONS.forEach((t,i)=>{
   });
 });
 
-/* Persistance des coches */
+/* Persistance coches */
 document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
    const k=cb.nextSibling.textContent.trim();
    cb.checked=localStorage.getItem(k)==='1';
    cb.onchange=()=>localStorage.setItem(k,cb.checked?'1':'');
 });
 
-/* Rafraîchissement automatique à 6h00 */
+/* Reload 6h00 automatique */
 (function(){
   const now=new Date(), next=new Date();
   next.setHours(6,0,0,0);
