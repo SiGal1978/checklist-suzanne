@@ -47,11 +47,11 @@ input{margin-right:4px;transform:scale(.9)}
 .tenirpropre{grid-area:4/1} .douche{grid-area:4/2}
 .dessert{grid-area:4/3} .coucher{grid-area:4/4} .tvdemain{grid-area:4/5}
 
-/* Dîner : 2 colonnes internes (50 %) – 3 colonnes si écran ≥ 1400 px */
+/* Dîner : 2 colonnes internes ; 3 si très grand écran */
 .diner label{width:50%;box-sizing:border-box}
 @media (min-width:1400px){ .diner label{width:33.333%} }
 
-/* portrait : calendrier en haut, image en bas */
+/* portrait : calendrier au-dessus, image dessous */
 @media (orientation:portrait){
   body{flex-direction:column}
   .left{max-height:66vh}
@@ -60,7 +60,8 @@ input{margin-right:4px;transform:scale(.9)}
   .diner label{width:50%}
 }
 
-.right img{max-width:100%;max-height:45%}
+/* IMAGE agrandie : 80 % de la hauteur du volet */
+.right img{max-width:100%;max-height:80%}
 </style>
 
 <script src="today.js"></script>
@@ -83,12 +84,12 @@ const SECTIONS=[
   "Tenir propre","Douche","Dessert","Coucher","TV demain"
 ];
 
-const data = window.CHECKLIST_DATA || {};
+const data=window.CHECKLIST_DATA||{};
 
-/* -------- bandeau date -------- */
-document.getElementById('title').textContent = data.date_fr || data.date || '';
+/* bandeau */
+document.getElementById('title').textContent=data.date_fr||data.date||'';
 
-/* -------- grille -------- */
+/* grille */
 const g=document.getElementById('grid');
 SECTIONS.forEach((t,i)=>{
   const s=document.createElement('section');
@@ -102,22 +103,22 @@ SECTIONS.forEach((t,i)=>{
   g.appendChild(s);
 });
 
-/* -------- persistance coches -------- */
+/* persistance */
 document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
   const k=cb.nextSibling.textContent.trim();
   cb.checked=localStorage.getItem(k)==='1';
   cb.onchange=()=>localStorage.setItem(k,cb.checked?'1':'');
 });
 
-/* -------- zone image : seulement l’image -------- */
+/* image seulement */
 document.getElementById('image').innerHTML =
   data.image ? `<img src="${data.image}" alt="">` : '';
 
-/* -------- reload à 06 h -------- */
+/* reload à 06 h */
 (function(){
-  const n=new Date(), nxt=new Date();
-  nxt.setHours(6,0,0,0); if(n>=nxt) nxt.setDate(nxt.getDate()+1);
-  setTimeout(()=>location.reload(), nxt-n);
+  const n=new Date(), nx=new Date();
+  nx.setHours(6,0,0,0); if(n>=nx) nx.setDate(nx.getDate()+1);
+  setTimeout(()=>location.reload(),nx-n);
 })();
 </script>
 </body>
