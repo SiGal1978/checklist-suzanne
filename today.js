@@ -10,7 +10,7 @@ window.CHECKLIST_DATA = {
   "Déjeuner": [
     "Yogourt Balkan 3/4 tasse",
     "3 craquelins",
-    "Beurre d'arachide 1 c. à s.",
+    "Tahini 1 c. à soupe",
     "Cheddar",
     "Œuf dur",
     "Collagène (ne pas décapsuler)",
@@ -26,7 +26,7 @@ window.CHECKLIST_DATA = {
     "Étirements"
   ],
   "Dîner": [
-    "Samosas légumes / poulet 1:2 (four 350 °F 20 min ou micro-ondes 1 min 30)",
+    "Samosas légumes et poulet ratio 1:2 (four 350F 20 min ou micro-ondes 1 min 30s)",
     "Banane entière",
     "Hummus",
     "Craquelins",
@@ -38,7 +38,7 @@ window.CHECKLIST_DATA = {
     "Dessert : biscuit Praeventia"
   ],
   "Médi-sieste": [
-    "15 – 20 min repos"
+    "minimum 15-20 min"
   ],
   "Jeux stimulants": [
     "Scrabble GO",
@@ -50,7 +50,7 @@ window.CHECKLIST_DATA = {
   ],
   "Souper": [
     "Cretons classiques + craquelins",
-    "St-Laurier",
+    "Sir Laurier",
     "Olives",
     "SunChips",
     "Calcium (ne pas décapsuler)",
@@ -63,7 +63,7 @@ window.CHECKLIST_DATA = {
     "On lave le cucul"
   ],
   "Dessert": [
-    "Mérité – Häagen-Dazs mini barres"
+    "Mérité?"
   ],
   "Coucher": [
     "Brosser dents",
@@ -72,7 +72,7 @@ window.CHECKLIST_DATA = {
     "Rebrancher iPad"
   ],
   "TV demain": [
-    "Mérité"
+    "Mérité?"
   ],
   "date": "2025-04-26"
 }
