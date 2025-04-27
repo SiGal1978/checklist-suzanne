@@ -25,27 +25,27 @@ window.CHECKLIST_DATA = {
     "Étirements"
   ],
   "Dîner": [
-    "Boeuf Merlot (micro-ondes 5 min + repos 1 min)",
-    "Macédoine (5 min + 2 min)",
+    "Boeuf Merlot – micro-ondes 5 min + repos 1 min",
+    "Macédoine de légumes – 5 min + 2 min",
     "1/3 banane",
-    "Trempette + craquelins",
+    "Trempette Southwest Ranch + craquelins",
     "Fromage bleu",
     "Shake protéiné",
     "Pepsi mini",
     "Oméga-3",
     "CoQ10 (ne pas décapsuler)",
     "Vit. C E TMG, etc.",
-    "Dessert : Chocolat Lindt aux noisettes"
+    "Dessert : Chocolat Lindt noisettes"
   ],
   "Médi-sieste": [
-    "15–20 min repos"
+    "15 – 20 min repos"
   ],
   "Jeux stimulants": [
     "Monument 1",
     "Jigsaw HD"
   ],
   "Écriture": [
-    "Pensées, souvenirs, autre"
+    "Pensées, souvenirs ou autre"
   ],
   "Souper": [
     "Jambon fumé bio + craquelins",
