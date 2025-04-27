@@ -10,11 +10,11 @@ window.CHECKLIST_DATA = {
   "Déjeuner": [
     "Yogourt Balkan 3/4 tasse",
     "3 craquelins",
-    "Tahini 1 c. à soupe",
+    "Beurre d'arachide 1 c. à s.",
     "Cheddar",
     "Œuf dur",
     "Collagène (ne pas décapsuler)",
-    "D3, K2, Zinc carnosine"
+    "D3 K2 Zinc carnosine"
   ],
   "Lecture": [
     "Lecture 1 h"
@@ -26,7 +26,7 @@ window.CHECKLIST_DATA = {
     "Étirements"
   ],
   "Dîner": [
-    "Samosas légumes et poulet ratio 1:2 (four 350F 20 min ou micro-ondes 1 min 30s)",
+    "Samosas légumes / poulet 1:2 (four 350 °F 20 min ou micro-ondes 1 min 30)",
     "Banane entière",
     "Hummus",
     "Craquelins",
@@ -34,7 +34,7 @@ window.CHECKLIST_DATA = {
     "Pepsi mini",
     "Oméga-3",
     "CoQ10 (ne pas décapsuler)",
-    "Vit. C, E, TMG, etc.",
+    "Vit. C E TMG, etc.",
     "Dessert : biscuit Praeventia"
   ],
   "Médi-sieste": [
@@ -45,11 +45,12 @@ window.CHECKLIST_DATA = {
     "Vita Mahjong"
   ],
   "Écriture": [
-    "Pensées, souvenirs ou autre"
+    "Pensées",
+    "souvenirs ou autre"
   ],
   "Souper": [
     "Cretons classiques + craquelins",
-    "Sir Laurier",
+    "St-Laurier",
     "Olives",
     "SunChips",
     "Calcium (ne pas décapsuler)",
@@ -61,13 +62,17 @@ window.CHECKLIST_DATA = {
   "Douche": [
     "On lave le cucul"
   ],
-  "Dessert": "Mérité?",
+  "Dessert": [
+    "Mérité – Häagen-Dazs mini barres"
+  ],
   "Coucher": [
     "Brosser dents",
     "Atorvastatine",
     "Cetirizine",
     "Rebrancher iPad"
   ],
-  "TV demain": "Mérité?",
+  "TV demain": [
+    "Mérité"
+  ],
   "date": "2025-04-26"
 }

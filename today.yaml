@@ -1,7 +1,6 @@
 date_fr: Dimanche 27 avril 2025
-image: imagedujour.png
-
-phrase: ""
+image: imagedujour.png          # ton PNG ou SVG du jour
+phrase: ""                      # on ne les utilise plus
 citation: ""
 
 Lever:
@@ -11,23 +10,17 @@ Lever:
 Déjeuner:
   - Yogourt Balkan 3/4 tasse
   - 3 craquelins
-  - Tahini 1 c. à soupe
+  - Beurre d'arachide 1 c. à s.
   - Cheddar
   - Œuf dur
   - Collagène (ne pas décapsuler)
-  - D3, K2, Zinc carnosine
+  - D3 K2 Zinc carnosine
 
-Lecture:
-  - Lecture 1 h
-
-Exercices:
-  - Échauffement
-  - Tapis 12 min
-  - Renforcement jambes/bras
-  - Étirements
+Lecture:      [Lecture 1 h]
+Exercices:    [Échauffement, Tapis 12 min, Renforcement jambes/bras, Étirements]
 
 Dîner:
-  - Samosas légumes et poulet ratio 1:2 (four 350F 20 min ou micro-ondes 1 min 30s)
+  - "Samosas légumes / poulet 1:2 (four 350 °F 20 min ou micro-ondes 1 min 30)"
   - Banane entière
   - Hummus
   - Craquelins
@@ -35,28 +28,23 @@ Dîner:
   - Pepsi mini
   - Oméga-3
   - CoQ10 (ne pas décapsuler)
-  - Vit. C, E, TMG, etc.
-  - "Dessert : biscuit Praeventia"   # ← guillemets ⇒ string
+  - Vit. C E TMG, etc.
+  - "Dessert : biscuit Praeventia"
 
-Médi-sieste: [15 – 20 min repos]
-
-Jeux stimulants:
-  - Scrabble GO
-  - Vita Mahjong
-
-Écriture:
-  - Pensées, souvenirs ou autre
+Médi-sieste:      ["15 – 20 min repos"]
+Jeux stimulants:  [Scrabble GO, Vita Mahjong]
+Écriture:         [Pensées, souvenirs ou autre]
 
 Souper:
   - Cretons classiques + craquelins
-  - Sir Laurier
+  - St-Laurier
   - Olives
   - SunChips
   - Calcium (ne pas décapsuler)
   - Valsartan
 
 Tenir propre: [Vérifier rangement]
-Douche: [On lave le cucul]
-Dessert: "Mérité?"   # Quoted to handle the question mark
-Coucher: [Brosser dents, Atorvastatine, Cetirizine, Rebrancher iPad]
-TV demain: "Mérité?"   # Quoted to handle the question mark
+Douche:       [On lave le cucul]
+Dessert:      ["Mérité – Häagen-Dazs mini barres"]
+Coucher:      [Brosser dents, Atorvastatine, Cetirizine, Rebrancher iPad]
+TV demain:    [Mérité]
