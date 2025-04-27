@@ -18,23 +18,26 @@ body{margin:0;font-family:Arial,sans-serif;display:flex;height:100vh}
 .right{flex:1;border-left:var(--border);display:flex;flex-direction:column;
        justify-content:center;align-items:center;padding:8px;overflow:hidden}
 
-/* image quasi pleine hauteur */
-.right img{max-width:100%;max-height:95%;object-fit:contain}
-
 header{background:var(--grey);font-weight:bold;font-size:24px;text-align:center;
        padding:6px 0;border-bottom:var(--border)}
 
 .grid{
-  flex:1;display:grid;gap:6px;padding:6px;overflow-y:auto;
+  flex:1;
+  display:grid;
   grid-template-columns:repeat(5,1fr);
   grid-template-rows:repeat(4,auto);
+  gap:6px;
+  padding:6px;
+  overflow-y:auto;
 }
+
 section{border:var(--border);padding:4px;display:flex;flex-direction:column}
 section h2{margin:0 0 4px;font-size:14px;font-weight:bold}
 label{display:inline-flex;align-items:center;font-size:12px;margin-bottom:2px}
-input{margin-right:4px;transform:scale(.9)}
+label.main{margin-bottom:4px}       /* case globale en haut */
+label.main input{transform:scale(1.1)}
+input:not(.main input){transform:scale(.9);margin-right:4px}
 
-/* placement fixe */
 .lever{grid-area:1/1}       .dejeuner{grid-area:1/2/2/4}
 .lecture{grid-area:1/4}     .exercices{grid-area:1/5}
 .diner{grid-area:2/1/3/6}
@@ -44,9 +47,8 @@ input{margin-right:4px;transform:scale(.9)}
 .dessert{grid-area:4/3}     .coucher{grid-area:4/4}
 .tvdemain{grid-area:4/5}
 
-/* Dîner : 2 colonnes internes (3 si très large) */
 .diner label{width:50%;box-sizing:border-box}
-@media (min-width:1400px){.diner label{width:33.333%}}
+@media (min-width:1400px){ .diner label:not(.main){width:33.333%} }
 
 @media (orientation:portrait){
   body{flex-direction:column}
@@ -55,10 +57,13 @@ input{margin-right:4px;transform:scale(.9)}
   .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
   .diner label{width:50%}
 }
+
+.right img{max-width:100%;max-height:95%;object-fit:contain}
 </style>
 
 <script src="today.js"></script>
 </head>
+
 <body>
 <div class="left">
   <header id="title">Chargement…</header>
@@ -77,21 +82,22 @@ const SECTIONS=[
 const data = window.CHECKLIST_DATA || {};
 
 /* bandeau */
-document.getElementById('title').textContent = data.date_fr||data.date||'';
+document.getElementById('title').textContent = data.date_fr || data.date || '';
 
 /* grille */
 const g=document.getElementById('grid');
-SECTIONS.forEach((t,i)=>{
+SECTIONS.forEach(t=>{
   const s=document.createElement('section');
-  s.className=t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-             .replace(/ /g,'');
+  s.className=t.toLowerCase().normalize('NFD')
+               .replace(/[\u0300-\u036f]/g,'').replace(/ /g,'');
+  /* h2 + grande case vide (sans intitulé) */
   s.innerHTML=`<h2>■ ${t}</h2>
-               <label><input type="checkbox">${t}</label>`;
+               <label class="main"><input type="checkbox"></label>`;
+  /* sous-items */
   (data[t]||[]).forEach(item=>{
-     /* convertit tout sauf string → string lisible */
-     const txt = (typeof item==="string") ? item
-                : Array.isArray(item)   ? item.join(' – ')
-                : JSON.stringify(item);
+     const txt = typeof item==="string" ? item
+               : Array.isArray(item)    ? item.join(' – ')
+               : JSON.stringify(item);
      s.insertAdjacentHTML('beforeend',
         `<label><input type="checkbox">${txt}</label>`);
   });
@@ -100,20 +106,21 @@ SECTIONS.forEach((t,i)=>{
 
 /* persistance */
 document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
-  const k=cb.nextSibling.textContent.trim();
-  cb.checked=localStorage.getItem(k)==='1';
-  cb.onchange=()=>localStorage.setItem(k,cb.checked?'1':'');
+  const k = cb.nextSibling? cb.nextSibling.textContent.trim()
+           : cb.parentElement.parentElement.querySelector('h2').textContent;
+  cb.checked = localStorage.getItem(k)==='1';
+  cb.onchange = ()=>localStorage.setItem(k, cb.checked?'1':'');
 });
 
-/* zone image seule */
+/* image seule */
 document.getElementById('image').innerHTML =
   data.image ? `<img src="${data.image}" alt="">` : '';
 
 /* reload 06 h */
 (function(){
-  const n=new Date(), nx=new Date();
+  const n=new Date(),nx=new Date();
   nx.setHours(6,0,0,0); if(n>=nx) nx.setDate(nx.getDate()+1);
-  setTimeout(()=>location.reload(), nx-n);
+  setTimeout(()=>location.reload(),nx-n);
 })();
 </script>
 </body>
