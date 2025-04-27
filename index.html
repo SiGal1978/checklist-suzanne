@@ -24,21 +24,19 @@ header{background:var(--grey);font-weight:bold;font-size:24px;text-align:center;
 .grid{
   flex:1;
   display:grid;
-  grid-template-columns:repeat(5,1fr);   /* toujours 5 */
-  grid-template-rows:repeat(4,auto);
   gap:6px;
   padding:6px;
-  overflow-y:auto;
+  overflow-y:auto;                  /* ← roulis clair */
+  grid-template-columns:repeat(5,1fr);
+  grid-template-rows:repeat(4,auto);
+  grid-auto-flow:row dense;         /* remplit les vides */
 }
 
 section{border:var(--border);padding:4px;display:flex;flex-direction:column}
 section h2{margin:0 0 4px;font-size:14px;font-weight:bold}
-label{display:inline-flex;align-items:center;font-size:12px;margin-bottom:2px}
-label.main{margin-bottom:4px}
-label.main input{transform:scale(1.1)}
-input:not(.main input){margin-right:4px;transform:scale(.9)}
+label{display:inline-flex;align-items:flex-start;font-size:12px;margin:0 0 2px}
+input{margin:2px 4px 0 0;transform:scale(.9)}
 
-/* placement fixe */
 .lever{grid-area:1/1}       .dejeuner{grid-area:1/2/2/4}
 .lecture{grid-area:1/4}     .exercices{grid-area:1/5}
 .diner{grid-area:2/1/3/6}
@@ -48,15 +46,20 @@ input:not(.main input){margin-right:4px;transform:scale(.9)}
 .dessert{grid-area:4/3}     .coucher{grid-area:4/4}
 .tvdemain{grid-area:4/5}
 
-/* Dîner : 2 colonnes internes (3 si écran ≥ 1400 px) */
 .diner label{width:50%;box-sizing:border-box}
-@media (min-width:1400px){.diner label:not(.main){width:33.333%}}
+@media (min-width:1400px){ .diner label{width:33.333%} }
 
-/* image : utilise pratiquement toute la hauteur du volet */
+@media (orientation:portrait){
+  body{flex-direction:column}
+  .left{max-height:66vh}
+  .right{border-left:none;border-top:var(--border);flex:none}
+  .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .diner label{width:50%}
+}
+
 .right img{max-width:100%;max-height:100%;object-fit:contain}
 </style>
 
-<!--  today.js doit définir window.CHECKLIST_DATA -->
 <script src="today.js"></script>
 </head>
 
@@ -75,48 +78,43 @@ const SECTIONS=[
   "Tenir propre","Douche","Dessert","Coucher","TV demain"
 ];
 
-const data = window.CHECKLIST_DATA || {};
+const data=window.CHECKLIST_DATA||{};
 
 /* bandeau */
-document.getElementById('title').textContent = data.date_fr||data.date||'';
+document.getElementById('title').textContent=data.date_fr||data.date||'';
 
-/* grille */
+/* grille : plus de grosse case “globale” */
 const grid=document.getElementById('grid');
 SECTIONS.forEach(t=>{
   const s=document.createElement('section');
   s.className=t.toLowerCase().normalize('NFD')
                .replace(/[\u0300-\u036f]/g,'').replace(/ /g,'');
-  s.innerHTML=`
-    <h2>■ ${t}</h2>
-    <label class="main"><input type="checkbox"></label>`;
+  s.innerHTML=`<h2>■ ${t}</h2>`;
   (data[t]||[]).forEach(item=>{
     const txt=typeof item==="string"?item
               :Array.isArray(item)?item.join(' – ')
               :JSON.stringify(item);
     s.insertAdjacentHTML('beforeend',
-         `<label><input type="checkbox">${txt}</label>`);
+        `<label><input type="checkbox">${txt}</label>`);
   });
   grid.appendChild(s);
 });
 
 /* persistance */
 document.querySelectorAll('input[type=checkbox]').forEach(cb=>{
-  const key=cb.nextSibling
-            ? cb.nextSibling.textContent.trim()
-            : cb.parentElement.parentElement.querySelector('h2').textContent;
+  const key=cb.nextSibling.textContent.trim();
   cb.checked=localStorage.getItem(key)==='1';
   cb.onchange=()=>localStorage.setItem(key,cb.checked?'1':'');
 });
 
-/* image seule */
-document.getElementById('image').innerHTML =
-  data.image ? `<img src="${data.image}" alt="">` : '';
+document.getElementById('image').innerHTML=
+  data.image?`<img src="${data.image}" alt="">`:'';
 
-/* reload à 06 h */
+/* reload 06 h */
 (function(){
-  const n=new Date(), nx=new Date();
+  const n=new Date(),nx=new Date();
   nx.setHours(6,0,0,0); if(n>=nx) nx.setDate(nx.getDate()+1);
-  setTimeout(()=>location.reload(), nx-n);
+  setTimeout(()=>location.reload(),nx-n);
 })();
 </script>
 </body>
