@@ -1,5 +1,5 @@
 window.CHECKLIST_DATA = {
-  "date_fr": "Samedi 26 avril 2025",
+  "date_fr": "Dimanche 27 avril 2025",
   "image": "imagedujour.png",
   "phrase": "",
   "citation": "",
@@ -10,7 +10,7 @@ window.CHECKLIST_DATA = {
   "Déjeuner": [
     "Yogourt Balkan 3/4 tasse",
     "3 craquelins",
-    "Beurre d'arachide 1 c. à s.",
+    "Tahini 1 c. à soupe",
     "Cheddar",
     "Œuf dur",
     "Collagène (ne pas décapsuler)",
@@ -21,36 +21,37 @@ window.CHECKLIST_DATA = {
   ],
   "Exercices": [
     "Échauffement",
+    "Tapis 12 min",
     "Renforcement jambes/bras",
     "Étirements"
   ],
   "Dîner": [
-    "Boeuf Merlot – micro-ondes 5 min + repos 1 min",
-    "Macédoine de légumes – 5 min + 2 min",
-    "1/3 banane",
-    "Trempette Southwest Ranch + craquelins",
+    "Samosas légumes et poulet ratio 1:2 (four 350F 20 min ou micro-ondes 1 min 30s)",
+    "Banane entière",
+    "Hummus",
+    "Craquelins",
     "Fromage bleu",
-    "Shake protéiné",
     "Pepsi mini",
     "Oméga-3",
     "CoQ10 (ne pas décapsuler)",
-    "Vit. C E TMG, etc.",
-    "Dessert : Chocolat Lindt noisettes"
+    "Vit. C, E, TMG, etc.",
+    "Dessert : biscuit Praeventia"
   ],
   "Médi-sieste": [
     "15 – 20 min repos"
   ],
   "Jeux stimulants": [
-    "Monument 1",
-    "Jigsaw HD"
+    "Scrabble GO",
+    "Vita Mahjong"
   ],
   "Écriture": [
     "Pensées, souvenirs ou autre"
   ],
   "Souper": [
-    "Jambon fumé bio + craquelins",
-    "Fromage de chèvre",
+    "Cretons classiques + craquelins",
+    "Sir Laurier",
     "Olives",
+    "SunChips",
     "Calcium (ne pas décapsuler)",
     "Valsartan"
   ],
@@ -60,17 +61,13 @@ window.CHECKLIST_DATA = {
   "Douche": [
     "On lave le cucul"
   ],
-  "Dessert": [
-    "Mérité – Häagen-Dazs mini barres"
-  ],
+  "Dessert": "Mérité?",
   "Coucher": [
     "Brosser dents",
     "Atorvastatine",
     "Cetirizine",
     "Rebrancher iPad"
   ],
-  "TV demain": [
-    "Mérité"
-  ],
+  "TV demain": "Mérité?",
   "date": "2025-04-26"
 }
